@@ -24,26 +24,24 @@ def battle_phase(player_1, player_2):
 
 
 def who_won(player_1, player_2):
-    if player_1.is_dead(player_2) == True:
-        print('\n{} Won!'.format(player_2.name))
-        return True
-    if player_2.is_dead(player_1) == True:
-        print('\n{} Won!'.format(player_1.name))
-        return True
-    else:
-        return False
+    while True:
+        if player_1.is_dead() == False and player_2.is_dead() == False:
+            print(player_1)
+            print(player_2)
+            battle_phase(player_1, player_2)
+            if player_1.is_dead() == True:
+                print('{} Won!'.format(player_2.name))
+            if player_2.is_dead() == True:
+                print('{} Won!'.format(player_1.name))
+            elif player_1.is_dead() == False and player_2.is_dead() == False:
+                print(player_1)
+                print(player_2)
+                battle_phase(player_2, player_1)
 
 
 def main():
     player_1 = new_gladiator()
     player_2 = new_gladiator()
-    while who_won(player_1, player_2) == False:
-        print(player_1)
-        print(player_2)
-        battle_phase(player_1, player_2)
-        print(player_1)
-        print(player_2)
-        battle_phase(player_2, player_1)
 
 
 if __name__ == '__main__':
