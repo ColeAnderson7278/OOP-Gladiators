@@ -50,10 +50,6 @@ class Gladiator:
 
     def is_dead(self, other):
         if self.health <= 0:
-            print('{} Wins!'.format(other.name))
-            exit()
-        if other.health <= 0:
-            print('{} Wins!'.format(self.name))
-            exit()
+            return True
         else:
             return False
