@@ -2,7 +2,7 @@ from random import *
 
 
 class Gladiator:
-    def __init__(self, name, health, rage, attack_high, attack_low):
+    def __init__(self, name, health, rage, attack_low, attack_high):
         self.name = name
         self.health = health
         self.rage = rage
@@ -10,7 +10,7 @@ class Gladiator:
         self.attack_low = attack_low
 
     def __str__(self):
-        return '{}\n__________\nHealth: {}\nRage: {}\n__________\n'.format(
+        return '\n{}\n---------------\nHealth: {}\nRage: {}\n---------------\n'.format(
             self.name, self.health, self.rage)
 
     def __repr__(self):
@@ -26,27 +26,23 @@ class Gladiator:
 
         if critical <= self.rage:
             other.health = crit_hit
+            print('\n^^^^^^^^^^^^^^^\nCritical Hit!\n^^^^^^^^^^^^^^^')
             self.rage = 0
             return other
-        elif critical > self.rage:
-            other = damage
+        if self.rage < critical:
+            other.health = damage
             self.rage += 15
             return other
 
     def heal(self):
         if self.rage < 10:
             return None
-        if self.rage >= 10:
-            if self.health >= 100:
-                return None
-            if 86 <= self.health >= 99:
-                self.health = 100
-                self.rage = self.rage - 10
-                return self.health, self.rage
-            else:
-                self.health = self.health + 15
-                self.rage = self.rage - 10
-                return self.heatlh, self.rage
+        elif self.rage >= 10:
+            self.health += 10
+            self.rage -= 10
+        if self.health >= 100:
+            self.health = 100
+            return self.health
 
     def is_dead(self, other):
         if self.health <= 0:
