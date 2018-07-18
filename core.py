@@ -14,3 +14,7 @@ class Gladiator:
         return 'Gladiator({}, {}, {}, {}, {})'.format(
             self.name, self.health, self.rage, self.attack_high,
             self.attack_low)
+
+
+#class Battle(Gladiator):
+#    def __init__(self,other):
