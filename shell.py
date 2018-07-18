@@ -1,14 +1,15 @@
 from core import *
 
 
-def making_gladiator():
-    gladiator_name = input('What is your name gladiator? ')
-    return Gladiator(str(gladiator_name), 100, 15, 25, 10)
+def new_gladiator():
+    name = input('What is the name of your gladiator? ')
+    gladiator = Gladiator(name, 100, 15, 10, 25)
+    return gladiator
 
 
 def main():
-    gladiator1 = making_gladiator()
-    print(gladiator1)
+    player_1 = new_gladiator()
+    player_2 = new_gladiator()
 
 
 if __name__ == '__main__':

@@ -1,3 +1,6 @@
+from random import randint
+
+
 class Gladiator:
     def __init__(self, name, health, rage, attack_high, attack_low):
         self.name = name
@@ -7,14 +10,10 @@ class Gladiator:
         self.attack_low = attack_low
 
     def __str__(self):
-        return '{}\n----------\nHealth: {}\nRage: {}\n----------'.format(
+        return '{}\n__________\nHealth: {}\nRage: {}\n__________\n'.format(
             self.name, self.health, self.rage)
 
     def __repr__(self):
         return 'Gladiator({}, {}, {}, {}, {})'.format(
             self.name, self.health, self.rage, self.attack_high,
             self.attack_low)
-
-
-#class Battle(Gladiator):
-#    def __init__(self,other):
