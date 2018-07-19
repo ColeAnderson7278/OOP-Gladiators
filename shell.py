@@ -2,9 +2,25 @@ from core import *
 
 
 def new_gladiator():
-    name = input('What is the name of your gladiator? ')
-    gladiator = Gladiator(name.capitalize(), 100, 15, 9, 25)
-    return gladiator
+    name = input('\nWhat is the name of your gladiator? ')
+    name = name.capitalize()
+    class_choice = input(
+        '\n1) Warrior(Base Stats)\n2) Monk(High Health, Low Rage, Precision Accuracy)\n3) Berserker(High Rage, Low Health, Grazing Possibility)\n4) Jester(Very Low Health, Chance To One Shot)\nWhat class will you choose? '
+    )
+    if class_choice == '1':
+        gladiator = Gladiator(name, 80, 15, 10, 25)
+        return gladiator
+    if class_choice == '2':
+        gladiator = Gladiator(name, 100, 0, 30, 30)
+        return gladiator
+    if class_choice == '3':
+        gladiator = Gladiator(name, 75, 30, 0, 40)
+        return gladiator
+    if class_choice == '4':
+        gladiator = Gladiator(name, 50, 0, 0, 100)
+        return gladiator
+    else:
+        print('\nPlease put in correct number.\n')
 
 
 def battle_phase(player_1, player_2):

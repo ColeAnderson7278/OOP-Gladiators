@@ -19,3 +19,9 @@ class TestGladiator:
         assert joe.heal() == (35, 15)
         assert bob.heal() == None
         assert rick.heal() == (100, 0)
+
+    def test_gladiator_is_dead(self):
+        joe = Gladiator('Joe', 1, 1, 1, 1)
+        not_joe = Gladiator('Not Joe', 0, 0, 0, 0)
+        assert joe.is_dead(not_joe) == False
+        assert not_joe.is_dead(joe) == True
