@@ -22,13 +22,15 @@ def gladiator_class(name):
             print('\nPlease put in correct number.\n')
 
 
-def new_gladiator():
+def gladiator_name():
     while True:
         name = input('\nWhat is the name of your gladiator? ')
         if name.strip() == '':
-            print('Please put in a name.')
+            print('\nPlease put in a name.')
+        if name.isalpha() == False:
+            print('\nPlease put in a name.')
         else:
-            return name.capitalize()
+            return name.capitalize().strip()
 
 
 def battle_phase(player_1, player_2):
@@ -74,9 +76,9 @@ def who_won(player_1, player_2):
 
 
 def main():
-    name_1 = new_gladiator()
+    name_1 = gladiator_name()
     player_1 = gladiator_class(name_1)
-    name_2 = new_gladiator()
+    name_2 = gladiator_name()
     player_2 = gladiator_class(name_2)
     who_won(player_1, player_2)
 

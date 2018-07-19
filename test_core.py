@@ -12,6 +12,14 @@ class TestGladiator:
         assert self.gladiator.attack_low == (3)
         assert self.gladiator.attack_high == (4)
 
+    def test_gladiator_attack(self):
+        joe = Gladiator('Joe', 25, 25, 5, 5)
+        bob = Gladiator('Bob', 35, 5, 1, 2)
+        rick = Gladiator('Rick', 99, 10, 1, 2)
+        assert joe.attack(bob) == (bob)
+        assert bob.attack(rick) == (rick)
+        assert rick.attack(joe) == (joe)
+
     def test_gladiator_heal(self):
         joe = Gladiator('Joe', 25, 25, 1, 2)
         bob = Gladiator('Bob', 35, 5, 1, 2)
@@ -19,6 +27,12 @@ class TestGladiator:
         assert joe.heal() == (35, 15)
         assert bob.heal() == None
         assert rick.heal() == (100, 0)
+
+    def test_gladiator_passing(self):
+        joe = Gladiator('Joe', 25, 25, 5, 5)
+        bob = Gladiator('Bob', 35, 5, 1, 2)
+        assert joe.passing() == (50)
+        assert bob.passing() == (30)
 
     def test_gladiator_is_dead(self):
         joe = Gladiator('Joe', 1, 1, 1, 1)
