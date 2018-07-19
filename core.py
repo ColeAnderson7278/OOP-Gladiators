@@ -6,8 +6,8 @@ class Gladiator:
         self.name = name
         self.health = health
         self.rage = rage
-        self.attack_high = attack_high
         self.attack_low = attack_low
+        self.attack_high = attack_high
 
     def __str__(self):
         return '\n{}\n---------------\nHealth: {}\nRage: {}\n---------------\n'.format(
@@ -35,14 +35,22 @@ class Gladiator:
             return other
 
     def heal(self):
-        if self.rage < 10:
+        if self.health == 100:
             return None
-        elif self.rage >= 10:
-            self.health += 10
-            self.rage -= 10
-        if self.health >= 100:
-            self.health = 100
-            return self.health
+        if 91 <= self.health <= 99:
+            if self.rage <= 9:
+                return None
+            elif self.rage >= 10:
+                self.rage -= 10
+                self.health = 100
+                return self.health, self.rage
+        elif self.health < 91:
+            if self.rage <= 9:
+                return None
+            elif self.rage >= 10:
+                self.rage -= 10
+                self.health += 10
+                return self.health, self.rage
 
     def passing(self):
         self.rage += 25
