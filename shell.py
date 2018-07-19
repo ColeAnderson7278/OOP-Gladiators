@@ -5,19 +5,19 @@ class Program:
     def gladiator_class(self, name):
         while True:
             class_choice = input(
-                '\n1) Warrior(Base Stats)\n2) Monk(High Health, Low Rage, Precision Accuracy)\n3) Berserker(High Rage, Low Health, Grazing Possibility)\n4) Jester(Very Low Health, Chance To One Shot)\nWhat class will you choose? '
+                '\n1) Warrior(Base Stats)\n2) Monk(High Health and Magic, Low Rage, Precision Accuracy)\n3) Berserker(High Rage, Low Magic, Grazing Possibility)\n4) Jester(Very Low Health, Chance To One Shot)\nWhat class will you choose? '
             )
             if class_choice == '1':
-                gladiator = Gladiator(str(name), 80, 15, 10, 25)
+                gladiator = Gladiator(str(name), 80, 15, 10, 10, 25)
                 return gladiator
             if class_choice == '2':
-                gladiator = Gladiator(str(name), 100, 0, 30, 30)
+                gladiator = Gladiator(str(name), 100, 0, 30, 25, 25)
                 return gladiator
             if class_choice == '3':
-                gladiator = Gladiator(str(name), 75, 30, 0, 40)
+                gladiator = Gladiator(str(name), 80, 30, 0, 0, 40)
                 return gladiator
             if class_choice == '4':
-                gladiator = Gladiator(str(name), 50, 0, 0, 100)
+                gladiator = Gladiator(str(name), 50, 0, 20, 0, 100)
                 return gladiator
             else:
                 print('\nPlease put in correct number.\n')
@@ -35,15 +35,17 @@ class Program:
     def battle_phase(self, player_1, player_2):
         while True:
             choice = input(
-                '\n1) Attack(+15 Rage)\n2) Heal(+10 Health, -10 Rage)\n3) Pass(+25 Rage)\n4) Quit\nWhat will you do {}? '.
+                '\n1) Attack(+15 Rage)\n2) Heal(+10 Health, -10 Rage)\n3) Cast(+10 Health, -10 Magic, -10 Enemy Health\n4) Pass(+25 Rage)\n5) Quit\nWhat will you do {}? '.
                 format(player_1.name))
             if choice == '1':
                 return player_1.attack(player_2)
             elif choice == '2':
                 return player_1.heal()
             elif choice == '3':
-                return player_1.passing()
+                return player_1.cast(player_2)
             elif choice == '4':
+                return player_1.passing()
+            elif choice == '5':
                 print('{} Wins!'.format(player_2.name))
                 exit()
 

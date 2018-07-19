@@ -2,20 +2,21 @@ from random import *
 
 
 class Gladiator:
-    def __init__(self, name, health, rage, attack_low, attack_high):
+    def __init__(self, name, health, rage, magic, attack_low, attack_high):
         self.name = name
         self.health = health
         self.rage = rage
+        self.magic = magic
         self.attack_low = attack_low
         self.attack_high = attack_high
 
     def __str__(self):
-        return '\n{}\n---------------\nHealth: {}\nRage: {}\n---------------\n'.format(
-            self.name, self.health, self.rage)
+        return '\n{}\n---------------\nHealth: {}\nRage: {}\nMagic: {}\n---------------\n'.format(
+            self.name, self.health, self.rage, self.magic)
 
     def __repr__(self):
-        return 'Gladiator({}, {}, {}, {}, {})'.format(
-            self.name, self.health, self.rage, self.attack_high,
+        return 'Gladiator({}, {}, {}, {}, {}, {})'.format(
+            self.name, self.health, self.rage, self.magic, self.attack_high,
             self.attack_low)
 
     def attack(self, other):
@@ -60,6 +61,26 @@ class Gladiator:
                 self.rage -= 10
                 self.health += 10
                 return self.health, self.rage
+
+    def cast(self, other):
+        if self.health == 100:
+            return None
+        if 91 <= self.health <= 99:
+            if self.magic <= 9:
+                return None
+            elif self.magic >= 10:
+                other.health = other.health - 10
+                self.magic -= 10
+                self.health = 100
+                return self.health, self.magic, other
+        elif self.health < 91:
+            if self.magic <= 9:
+                return None
+            elif self.magic >= 10:
+                other.health = other.health - 10
+                self.magic -= 10
+                self.health += 10
+                return self.health, self.magic, other
 
     def passing(self):
         if self.rage >= 100:
