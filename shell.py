@@ -35,7 +35,7 @@ class Program:
     def battle_phase(self, player_1, player_2):
         while True:
             choice = input(
-                '\n1) Attack(+15 Rage)\n2) Heal(+10 Health, -10 Rage)\n3) Cast(+10 Health, -10 Magic, -10 Enemy Health\n4) Pass(+25 Rage)\n5) Quit\nWhat will you do {}? '.
+                '\n1) Attack(+15 Rage)\n2) Heal(+10 Health, -10 Rage)\n3) Cast(+10 Health, -10 Magic, -10 Enemy Health)\n4) Pass(+25 Rage, +25 Magic)\n5) Quit\nWhat will you do {}? '.
                 format(player_1.name))
             if choice == '1':
                 return player_1.attack(player_2)
