@@ -1,26 +1,34 @@
 from core import *
 
 
+def gladiator_class(name):
+    while True:
+        class_choice = input(
+            '\n1) Warrior(Base Stats)\n2) Monk(High Health, Low Rage, Precision Accuracy)\n3) Berserker(High Rage, Low Health, Grazing Possibility)\n4) Jester(Very Low Health, Chance To One Shot)\nWhat class will you choose? '
+        )
+        if class_choice == '1':
+            gladiator = Gladiator(str(name), 80, 15, 10, 25)
+            return gladiator
+        if class_choice == '2':
+            gladiator = Gladiator(str(name), 100, 0, 30, 30)
+            return gladiator
+        if class_choice == '3':
+            gladiator = Gladiator(str(name), 75, 30, 0, 40)
+            return gladiator
+        if class_choice == '4':
+            gladiator = Gladiator(str(name), 50, 0, 0, 100)
+            return gladiator
+        else:
+            print('\nPlease put in correct number.\n')
+
+
 def new_gladiator():
-    name = input('\nWhat is the name of your gladiator? ')
-    name = name.capitalize()
-    class_choice = input(
-        '\n1) Warrior(Base Stats)\n2) Monk(High Health, Low Rage, Precision Accuracy)\n3) Berserker(High Rage, Low Health, Grazing Possibility)\n4) Jester(Very Low Health, Chance To One Shot)\nWhat class will you choose? '
-    )
-    if class_choice == '1':
-        gladiator = Gladiator(name, 80, 15, 10, 25)
-        return gladiator
-    if class_choice == '2':
-        gladiator = Gladiator(name, 100, 0, 30, 30)
-        return gladiator
-    if class_choice == '3':
-        gladiator = Gladiator(name, 75, 30, 0, 40)
-        return gladiator
-    if class_choice == '4':
-        gladiator = Gladiator(name, 50, 0, 0, 100)
-        return gladiator
-    else:
-        print('\nPlease put in correct number.\n')
+    while True:
+        name = input('\nWhat is the name of your gladiator? ')
+        if name.strip() == '':
+            print('Please put in a name.')
+        else:
+            return name.capitalize()
 
 
 def battle_phase(player_1, player_2):
@@ -66,8 +74,10 @@ def who_won(player_1, player_2):
 
 
 def main():
-    player_1 = new_gladiator()
-    player_2 = new_gladiator()
+    name_1 = new_gladiator()
+    player_1 = gladiator_class(name_1)
+    name_2 = new_gladiator()
+    player_2 = gladiator_class(name_2)
     who_won(player_1, player_2)
 
 
