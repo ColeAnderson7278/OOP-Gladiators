@@ -83,15 +83,9 @@ class Gladiator:
                 return self.health, self.magic, other
 
     def passing(self):
-        if self.rage >= 100:
-            self.rage = 100
-            return self.rage
-        if 76 <= self.rage <= 99:
-            self.rage = 100
-            return self.rage
-        if self.rage < 76:
-            self.rage += 25
-            return self.rage
+        self.rage += 25
+        self.magic += 25
+        return self.rage, self.magic
 
     def is_dead(self, other):
         if self.health <= 0:
