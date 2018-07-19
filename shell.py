@@ -10,14 +10,14 @@ def new_gladiator():
 def battle_phase(player_1, player_2):
     while True:
         choice = input(
-            '\n1) Attack\n2) Heal\n3) Pass\n4) Quit\nWhat will you do {}? '.
+            '\n1) Attack(+15 Rage)\n2) Heal(+10 Health, -10 Rage)\n3) Pass(+25 Rage)\n4) Quit\nWhat will you do {}? '.
             format(player_1.name))
         if choice == '1':
             return player_1.attack(player_2)
         elif choice == '2':
             return player_1.heal()
         elif choice == '3':
-            return None
+            return player_1.passing()
         elif choice == '4':
             print('{} Wins!'.format(player_2.name))
             exit()

@@ -44,6 +44,10 @@ class Gladiator:
             self.health = 100
             return self.health
 
+    def passing(self):
+        self.rage += 25
+        return self.rage
+
     def is_dead(self, other):
         if self.health <= 0:
             return True
