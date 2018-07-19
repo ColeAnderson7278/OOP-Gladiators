@@ -30,9 +30,18 @@ class Gladiator:
             self.rage = 0
             return other
         if self.rage < critical:
-            other.health = damage
-            self.rage += 15
-            return other
+            if self.rage >= 100:
+                other.health = damage
+                self.rage = 100
+                return other
+            if 86 <= self.rage <= 99:
+                other.health = damage
+                self.rage = 100
+                return other
+            if self.rage < 86:
+                other.health = damage
+                self.rage += 15
+                return other
 
     def heal(self):
         if self.health == 100:
@@ -53,8 +62,15 @@ class Gladiator:
                 return self.health, self.rage
 
     def passing(self):
-        self.rage += 25
-        return self.rage
+        if self.rage >= 100:
+            self.rage = 100
+            return self.rage
+        if 76 <= self.rage <= 99:
+            self.rage = 100
+            return self.rage
+        if self.rage < 76:
+            self.rage += 25
+            return self.rage
 
     def is_dead(self, other):
         if self.health <= 0:
