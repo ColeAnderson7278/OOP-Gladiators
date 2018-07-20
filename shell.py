@@ -4,25 +4,30 @@ from random import choice, randint
 
 class Program:
     def single_multi(self):
-        choice = input('1) Single Player 2) Multi. Player')
-        if choice == '2':
-            name_1 = self.gladiator_name()
-            player_1 = self.gladiator_class(name_1)
-            name_2 = self.gladiator_name()
-            player_2 = self.gladiator_class(name_2)
-            self.who_won(player_1, player_2)
-        if choice == '1':
-            name_1 = self.gladiator_name()
-            player_1 = self.gladiator_class(name_1)
-            player_2 = Gladiator('Enemy', randint(75, 100), randint(0, 25),
-                                 randint(0, 30), randint(5, 15), randint(
-                                     15, 50))
-            self.single_who_won(player_1, player_2)
+        while True:
+            choice = input(
+                '1) Single Player 2) Multi. Player\n\nWhich would you like to play? '
+            )
+            if choice == '2':
+                name_1 = self.gladiator_name()
+                player_1 = self.gladiator_class(name_1)
+                name_2 = self.gladiator_name()
+                player_2 = self.gladiator_class(name_2)
+                self.who_won(player_1, player_2)
+            if choice == '1':
+                name_1 = self.gladiator_name()
+                player_1 = self.gladiator_class(name_1)
+                player_2 = Gladiator('Enemy', randint(75, 100), randint(0, 25),
+                                     randint(0, 30), randint(5, 15),
+                                     randint(15, 50))
+                self.single_who_won(player_1, player_2)
+            else:
+                print('\nPlease put in a valid choice.\n')
 
     def gladiator_class(self, name):
         while True:
             class_choice = input(
-                '\n1) Warrior(Base Stats)\n\n2) Monk(High Health and Magic, Low Rage, Precision Accuracy)\n\n3) Berserker(High Rage, Low Magic, Grazing Possibility)\n\n4) Jester(Very Low Health, Chance To One Shot)\n\nWhat class will you choose? '
+                '\n1) Warrior(Base Stats)\n2) Monk(High Health and Magic, Low Rage, Precision Accuracy)\n3) Berserker(High Rage, Low Magic, Grazing Possibility)\n4) Jester(Very Low Health, Chance To One Shot)\n\nWhat class will you choose? '
             )
             if class_choice == '1':
                 gladiator = Gladiator(str(name), 80, 15, 10, 10, 25)
