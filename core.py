@@ -94,6 +94,17 @@ class Gladiator:
                 self.health += 10
                 return self.health, self.magic, other
 
+    def ai_battle(self, other):
+        if self.health <= 50:
+            if self.rage >= 10:
+                return self.heal()
+            elif self.magic >= 10:
+                return self.cast(other)
+            else:
+                return self.passing()
+        if self.health > 50:
+            return self.attack(other)
+
     def passing(self):
         self.rage += 25
         self.magic += 25

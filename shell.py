@@ -1,7 +1,24 @@
 from core import *
+from random import choice, randint
 
 
 class Program:
+    def single_multi(self):
+        choice = input('1) Single Player 2) Multi. Player')
+        if choice == '2':
+            name_1 = self.gladiator_name()
+            player_1 = self.gladiator_class(name_1)
+            name_2 = self.gladiator_name()
+            player_2 = self.gladiator_class(name_2)
+            self.who_won(player_1, player_2)
+        if choice == '1':
+            name_1 = self.gladiator_name()
+            player_1 = self.gladiator_class(name_1)
+            player_2 = Gladiator('Enemy', randint(75, 100), randint(0, 25),
+                                 randint(0, 30), randint(5, 15), randint(
+                                     15, 50))
+            self.single_who_won(player_1, player_2)
+
     def gladiator_class(self, name):
         while True:
             class_choice = input(
@@ -76,12 +93,35 @@ class Program:
                             player_1.name))
                         exit()
 
+    def single_who_won(self, player_1, player_2):
+        while True:
+            if player_1.is_dead(player_2) == False and player_2.is_dead(
+                    player_1) == False:
+                print(player_1)
+                print(player_2)
+                self.battle_phase(player_1, player_2)
+                if player_1.is_dead(player_2) == True:
+                    print('\n---------------\n{} Won!'.format(player_2.name))
+                    exit()
+                if player_2.is_dead(player_1) == True:
+                    print('\n---------------\n{} Won!'.format(player_1.name))
+                    exit()
+                elif player_1.is_dead(player_2) == False and player_2.is_dead(
+                        player_1) == False:
+                    print(player_1)
+                    print(player_2)
+                    player_2.ai_battle(player_1)
+                    if player_1.is_dead(player_2) == True:
+                        print('\n---------------\n{} Won!'.format(
+                            player_2.name))
+                        exit()
+                    if player_2.is_dead(player_1) == True:
+                        print('\n---------------\n{} Won!'.format(
+                            player_1.name))
+                        exit()
+
     def main(self):
-        name_1 = self.gladiator_name()
-        player_1 = self.gladiator_class(name_1)
-        name_2 = self.gladiator_name()
-        player_2 = self.gladiator_class(name_2)
-        self.who_won(player_1, player_2)
+        self.single_multi()
 
 
 if __name__ == '__main__':
