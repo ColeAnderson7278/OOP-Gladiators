@@ -5,7 +5,7 @@ class Program:
     def gladiator_class(self, name):
         while True:
             class_choice = input(
-                '\n1) Warrior(Base Stats)\n2) Monk(High Health and Magic, Low Rage, Precision Accuracy)\n3) Berserker(High Rage, Low Magic, Grazing Possibility)\n4) Jester(Very Low Health, Chance To One Shot)\nWhat class will you choose? '
+                '\n1) Warrior(Base Stats)\n\n2) Monk(High Health and Magic, Low Rage, Precision Accuracy)\n\n3) Berserker(High Rage, Low Magic, Grazing Possibility)\n\n4) Jester(Very Low Health, Chance To One Shot)\n\nWhat class will you choose? '
             )
             if class_choice == '1':
                 gladiator = Gladiator(str(name), 80, 15, 10, 10, 25)

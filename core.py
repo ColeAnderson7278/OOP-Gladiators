@@ -46,17 +46,23 @@ class Gladiator:
 
     def heal(self):
         if self.health == 100:
-            return None
+            print(
+                '\n********************\nHealth already full.\n********************'
+            )
         if 91 <= self.health <= 99:
             if self.rage <= 9:
-                return None
+                print(
+                    '\n*******************\nRage is too low.\n********************'
+                )
             elif self.rage >= 10:
                 self.rage -= 10
                 self.health = 100
                 return self.health, self.rage
         elif self.health < 91:
             if self.rage <= 9:
-                return None
+                print(
+                    '\n********************\nRage is too low.\n********************'
+                )
             elif self.rage >= 10:
                 self.rage -= 10
                 self.health += 10
@@ -64,10 +70,14 @@ class Gladiator:
 
     def cast(self, other):
         if self.health == 100:
-            return None
+            print(
+                '\n********************\nHealth already full.\n*******************'
+            )
         if 91 <= self.health <= 99:
             if self.magic <= 9:
-                return None
+                print(
+                    '\n********************\nMagic is too low.\n********************'
+                )
             elif self.magic >= 10:
                 other.health = other.health - 10
                 self.magic -= 10
@@ -75,7 +85,9 @@ class Gladiator:
                 return self.health, self.magic, other
         elif self.health < 91:
             if self.magic <= 9:
-                return None
+                print(
+                    '\n********************\nMagic is too low.\n********************'
+                )
             elif self.magic >= 10:
                 other.health = other.health - 10
                 self.magic -= 10
